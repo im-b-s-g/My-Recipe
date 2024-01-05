@@ -18,7 +18,7 @@ const Header = () => {
                 const userID = decodedToken.id;
                 axios
                     .get(
-                        `${BASE_URL}/api/users/${userID}`
+                        `${BASE_URL}/api/users/getUser/${userID}`
                     )
                     .then((response) => {
                         setFullName(response.data.user.fullName);
@@ -37,6 +37,7 @@ const Header = () => {
     }
 
     const handleLogoutClick = () => {
+        localStorage.removeItem("token");
         dispatch(logout());
     }
 

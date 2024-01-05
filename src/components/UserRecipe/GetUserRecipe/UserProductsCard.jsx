@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const ProductsCard = ({ recipe }) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/${recipe._id}`);
+    navigate(`/user/${recipe._id}`);
   }
 
   return (

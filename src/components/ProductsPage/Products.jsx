@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import ProductCard from './ProductsCard';
+import ProductsCard from './ProductsCard';
+import { BASE_URL } from '../../config';
 
 const Products = () => {
     const [recipes, setRecipes] = useState([]);
@@ -8,7 +9,7 @@ const Products = () => {
     useEffect(() => {
         const fetchRecipes = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/recipes/all');
+                const response = await axios.get(`${BASE_URL}/api/recipes/all`);
                 setRecipes(response.data.recipes);
             } catch (error) {
                 console.error('Error fetching recipes:', error);
@@ -19,11 +20,11 @@ const Products = () => {
 
     return (
         <div>
-            <h1>Recipes</h1>
+            <h1>Recipes By Our Chefs</h1>
             <ul style={{ listStyle: 'none' }}>
                 {recipes.map((recipe) => (
                     <li key={recipe._id}>
-                        <ProductCard recipe={recipe} />
+                        <ProductsCard recipe={recipe} />
                     </li>
                 ))}
             </ul>

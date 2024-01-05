@@ -5,6 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { jwtDecode } from "jwt-decode";
 import { BASE_URL } from '../../../config';
+import './EditRecipe.css'
 
 const EditRecipe = () => {
     const navigate = useNavigate();
@@ -27,23 +28,22 @@ const EditRecipe = () => {
     useEffect(() => {
         const fetchRecipe = async () => {
             try {
-                const response = await axios.get(`${BASE_URL}/api/recipes/${id}`);
-                const recipe = response.data.recipe;
-
+                const response = await axios.get(`${BASE_URL}/api/users/getOneByUser/${id}`);
+                const recipe = response.data.recipes[0];
                 if (recipe.userId !== userID) {
                     alert('You are not authorized to edit this recipe.');
                     navigate('/');
                 }
 
                 setRecipeData({
-                    name: recipe.name,
-                    image: recipe.image,
-                    excerpt: recipe.excerpt,
-                    description: recipe.description,
-                    ingredients: recipe.ingredients.join(', '),
-                    steps: recipe.steps.join(', '),
-                    category: recipe.category,
-                    tags: recipe.tags.join(', '),
+                    name: recipe.name || '',
+                    image: recipe.image || '',
+                    excerpt: recipe.excerpt || '',
+                    description: recipe.description || '',
+                    ingredients: recipe.ingredients ? recipe.ingredients.join(', ') : '',
+                    steps: recipe.steps ? recipe.steps.join(', ') : '',
+                    category: recipe.category || '',
+                    tags: recipe.tags ? recipe.tags.join(', ') : '',
                 });
             } catch (error) {
                 console.error('Error fetching recipe for editing:', error);
@@ -68,7 +68,7 @@ const EditRecipe = () => {
             const ingredientsArray = recipeData.ingredients.split(',').map(item => item.trim());
             const stepsArray = recipeData.steps.split(',').map(item => item.trim());
 
-            const response = await axios.put(`${BASE_URL}/api/recipes/edit/${id}`, {
+            const response = await axios.patch(`${BASE_URL}/api/users/editUserRecipe/${id}`, {
                 ...recipeData,
                 userId: userID,
                 ingredients: ingredientsArray,
@@ -78,16 +78,17 @@ const EditRecipe = () => {
 
             console.log(response.data);
             alert('Recipe edited successfully!');
-            navigate('/');
+            navigate(`/your/${id}`);
         } catch (error) {
             console.error('Error editing recipe:', error);
         }
     };
 
     return (
-        <div>
+        <div className="edit-recipe-container">
             <h2>Edit Recipe</h2>
-            <form onSubmit={handleSubmit}>
+            <p>Input data in whatever field you want to edit.</p>
+            <form className="edit-recipe-form" onSubmit={handleSubmit}>
                 <label htmlFor="name">Name:</label>
                 <input type="text" id="name" name="name" value={recipeData.name} onChange={handleChange} required />
 
@@ -111,7 +112,8 @@ const EditRecipe = () => {
 
                 <label htmlFor="tags">Tags (comma-separated):</label>
                 <input type="text" id="tags" name="tags" value={recipeData.tags} onChange={handleChange} required />
-                <button type="submit">Save Changes</button>
+
+                <button className="save-changes-button" type="submit">Save Changes</button>
             </form>
         </div>
     );
