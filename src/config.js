@@ -1,3 +1,3 @@
-const BASE_URL = 'http://localhost:4000';
+const BASE_URL = 'https://my-recipe-backend.vercel.app';
 
 export { BASE_URL };
