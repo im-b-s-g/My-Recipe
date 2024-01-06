@@ -9,10 +9,10 @@ const ProductsCard = ({ recipe }) => {
   }
 
   return (
-    <div className="product-card" onClick={handleClick}>
-      <img className="product-image" src={recipe.image} alt={recipe.name} />
-      <h2 className="product-title">{recipe.name}</h2>
-      <p className="product-excerpt">{recipe.excerpt}</p>
+    <div className="YourProduct_product-card" onClick={handleClick}>
+      <img className="YourProduct_product-image" src={recipe.image} alt={recipe.name} />
+      <h2 className="YourProduct_product-title">{recipe.name}</h2>
+      <p className="YourProduct_product-excerpt">{recipe.excerpt}</p>
     </div>
   );
 };
