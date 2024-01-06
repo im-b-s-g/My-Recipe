@@ -20,9 +20,9 @@ const GetUserRecipe = () => {
     }, []);
 
     return (
-        <div>
-            <h1>Recipes By Our Users</h1>
-            <ul style={{ listStyle: 'none' }}>
+        <div className="recipe-list-container">
+            <h1 className="recipe-list-heading">Recipes By Our Users</h1>
+            <ul className="recipe-list">
                 {recipes.map((recipe) => (
                     <li key={recipe._id}>
                         <UserProductsCard recipe={recipe} />

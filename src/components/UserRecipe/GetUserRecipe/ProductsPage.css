@@ -1,4 +1,4 @@
-.recipe-container {
+.UserProducts_recipe-container {
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
@@ -8,13 +8,13 @@
     text-align: left;
 }
 
-.recipe-title {
+.UserProducts_recipe-title {
     font-size: 1.5rem;
     margin-bottom: 10px;
     color: #333;
 }
 
-.recipe-image {
+.UserProducts_recipe-image {
     width: 100%;
     height: auto;
     margin-bottom: 15px;
@@ -22,29 +22,29 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.recipe-description {
+.UserProducts_recipe-description {
     margin-bottom: 15px;
     color: #555;
 }
 
-.recipe-section-title {
+.UserProducts_recipe-section-title {
     font-size: 1.2rem;
     margin-bottom: 10px;
     color: #333;
 }
 
-.recipe-list {
+.UserProducts_recipe-list {
     list-style: none;
     padding: 0;
 }
 
-.recipe-list-item {
+.UserProducts_recipe-list-item {
     margin-bottom: 5px;
     color: #555;
     line-height: 1.4;
 }
 
-.recipe-list-item span {
+.UserProducts_recipe-list-item span {
     font-weight: bold;
 }
 

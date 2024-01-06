@@ -29,23 +29,23 @@ const UserProductsPage = () => {
     }
 
     return (
-        <div className="recipe-container">
-            <h1 className="recipe-title">{recipe.name}</h1>
-            <img className="recipe-image" src={recipe.image} alt={recipe.name} />
-            <p className="recipe-description">{recipe.description}</p>
-            <h2 className="recipe-section-title">Ingredients:</h2>
-            <ol className="recipe-list">
+        <div className="UserProducts_recipe-container">
+            <h1 className="UserProducts_recipe-title">{recipe.name}</h1>
+            <img className="UserProducts_recipe-image" src={recipe.image} alt={recipe.name} />
+            <p className="UserProducts_recipe-description">{recipe.description}</p>
+            <h2 className="UserProducts_recipe-section-title">Ingredients:</h2>
+            <ol className="UserProducts_recipe-list">
                 {recipe.ingredients.map((ingredient, index) => (
-                    <li key={index} className="recipe-list-item">{ingredient}</li>
+                    <li key={index} className="UserProducts_recipe-list-item">{ingredient}</li>
                 ))}
             </ol>
-            <h2 className="recipe-section-title">Steps:</h2>
-            <ol className="recipe-list">
+            <h2 className="UserProducts_recipe-section-title">Steps:</h2>
+            <ol className="UserProducts_recipe-list">
                 {recipe.steps.map((step, index) => (
-                    <li key={index} className="recipe-list-item"><span>{`Step:${index + 1} `}</span>{step}</li>
+                    <li key={index} className="UserProducts_recipe-list-item"><span>{`Step:${index + 1} `}</span>{step}</li>
                 ))}
             </ol>
-            <p className="submitted-by"><span style={{ fontWeight: 'bold' }}>Recipe By :</span> {user}</p>
+            <p className="UserProducts_submitted-by"><span style={{ fontWeight: 'bold' }}>Recipe By :</span> {user}</p>
         </div>
     );
 };

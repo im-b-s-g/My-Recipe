@@ -51,29 +51,29 @@ const YourProductsPage = () => {
     }
 
     return (
-        <div className="recipe-container">
-            <h1 className="recipe-title">{recipe.name}</h1>
+        <div className="YourProducts_recipe-container">
+            <h1 className="YourProducts_recipe-title">{recipe.name}</h1>
             <img className="recipe-image" src={recipe.image} alt={recipe.name} />
-            <p className="recipe-description">{recipe.description}</p>
-            <h2 className="recipe-section-title">Ingredients:</h2>
-            <ol className="recipe-list">
+            <p className="YourProducts_recipe-description">{recipe.description}</p>
+            <h2 className="YourProducts_recipe-section-title">Ingredients:</h2>
+            <ol className="YourProducts_recipe-list">
                 {recipe.ingredients.map((ingredient, index) => (
-                    <li key={index} className="recipe-list-item">{ingredient}</li>
+                    <li key={index} className="YourProducts_recipe-list-item">{ingredient}</li>
                 ))}
             </ol>
-            <h2 className="recipe-section-title">Steps:</h2>
-            <ol className="recipe-list">
+            <h2 className="YourProducts_recipe-section-title">Steps:</h2>
+            <ul className="YourProducts_recipe-list" >
                 {recipe.steps.map((step, index) => (
-                    <li key={index} className="recipe-list-item"><span>{`Step:${index + 1} `}</span>{step}</li>
+                    <li key={index} className="YourProducts_recipe-list-item"><span>{`Step:${index + 1} `}</span>{step}</li>
                 ))}
-            </ol>
-            <p className="submitted-by"><span style={{ fontWeight: 'bold' }}>Recipe By :</span> {user}</p>
+            </ul>
+            <p className="YourProducts_submitted-by"><span style={{ fontWeight: 'bold' }}>Recipe By :</span> {user}</p>
 
-            <div className="recipe_buttons">
-                <button className='edit_button' onClick={handleEdit}>Edit</button>
-                <button className='delete_button' onClick={handleDelete}>Delete</button>
+            <div className="YourProducts_recipe_buttons">
+                <button className='YourProducts_edit_button' onClick={handleEdit}>Edit</button>
+                <button className='YourProducts_delete_button' onClick={handleDelete}>Delete</button>
             </div>
-        </div>
+        </div >
     );
 };
 
