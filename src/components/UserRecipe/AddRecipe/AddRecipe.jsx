@@ -8,10 +8,31 @@ import { useNavigate } from 'react-router-dom';
 import './AddRecipe.css';
 
 const AddRecipe = () => {
-    const token = useSelector((state) => state.auth.token);
-    const decodedToken = jwtDecode(token);
-    const userID = decodedToken.id;
+
     const navigate = useNavigate();
+    const token = useSelector((state) => state.auth.token);
+    const [userID, setUserID] = useState(null);
+
+    useEffect(() => {
+        const decodeToken = () => {
+            if (token) {
+                try {
+                    const decodedToken = jwtDecode(token);
+                    setUserID(decodedToken.id);
+                } catch (error) {
+                    console.error('Error decoding token:', error);
+                    alert('Please log in again.');
+                    navigate('/login');
+                }
+            } else {
+                alert('You are not logged in.');
+                navigate('/login');
+            }
+        };
+
+        decodeToken();
+    }, [token, navigate]);
+
     const [recipeData, setRecipeData] = useState({
         name: '',
         image: '',

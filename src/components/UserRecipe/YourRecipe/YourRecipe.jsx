@@ -9,9 +9,11 @@ import { jwtDecode } from "jwt-decode";
 const YourRecipe = () => {
     const [recipes, setRecipes] = useState([]);
     const token = useSelector((state) => state.auth.token);
-    const decodedToken = jwtDecode(token);
-    const userID = decodedToken.id;
-
+    let userID;
+    if (token) {
+        const decodedToken = jwtDecode(token);
+        userID = decodedToken.id;
+    }
     useEffect(() => {
         const fetchRecipes = async () => {
             try {
